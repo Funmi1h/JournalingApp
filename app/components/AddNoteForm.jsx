@@ -1,7 +1,7 @@
 "use client"
 import ButtonForm from './ButtonForm'
 import styles from "./AddNoteForm.module.css"
-import { createNote } from '../action';
+import { createNote, updateNote } from '../action';
 import { useState } from 'react';
 import {db} from "@/lib/firebase";
 function getDate(){
@@ -69,8 +69,11 @@ export default function AddNoteForm({onClose, editingNote}){
             alert("Veuillez remplir tous les champs!");
             return
         }
-        const response = await createNote({date, contenu});
-        console.log(response);
+        if(editingNote){
+            await updateNote(editingNote.id, date, contenu);
+        }else{
+            await createNote(date, contenu);
+        }
         setContenu("");
         setDate("");
         onClose();

@@ -35,8 +35,7 @@ export default function Page() {
       </div>
       <SimpleButton text = {"+  Nouvelle entrée"} onCliqueDessus={openForm} />
 
-    </div>const [date, setDate] = useState(editingNote?.date || "&quot;);
-const [contenu, setContenu] = useState(editingNote?.contenu || "");
+    </div>
     <AllNotes onEdit = {openEditForm}/>
   </>
   }
