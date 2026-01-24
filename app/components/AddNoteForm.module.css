@@ -1,0 +1,32 @@
+.AddNoteForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:   auto;
+    position:absolute;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 600px;
+    margin: auto;
+
+}
+.titre{
+    font-weight: bold;
+}
+.textarea, .input{
+    border: 1px solid black;
+    padding: 12px;
+    border-radius: 8px;
+
+}
+
+.inputGroup{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
