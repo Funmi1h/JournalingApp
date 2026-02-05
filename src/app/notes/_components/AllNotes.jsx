@@ -1,4 +1,5 @@
 'use client '
+import { readAllNote } from "@/src/app/action"
 import NoteCard from "@/src/app/notes/_components/NoteCard"
 import SimpleButton from "@/src/components/ui/SimpleButton";
 import { useState, useEffect } from "react";
@@ -29,18 +30,16 @@ export default  function AllNote({onEdit, openForm}){
      const [notesList, setNotesList] = useState([]);
      useEffect(()=>{
        async function loadNotes(){
-            try{
-               const res = await fetch('/api/notes');
-               if(!res.ok) throw new Error('Erreur API: ' + res.status);
-               const result = await res.json();
-               setSize(result.size ?? result.tailleNotesList ?? 0);
-               setNotesList(result.data || []);
-            }catch(error){
-               console.error('Erreur lecture des notes:', error);
-               setSize(0);
-               setNotesList([]);
-            }finally{
-               setLoading(false);
+            try {
+              const result = await readAllNote();
+              setSize(result.tailleNotesList);
+              setNotesList(result.data || []);
+            } catch(error) {
+              console.error("Erreur lors du chargement des notes:", error);
+              setSize(0);
+              setNotesList([]);
+            } finally {
+              setLoading(false);
             }
         }
       
