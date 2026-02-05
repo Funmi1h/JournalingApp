@@ -1,15 +1,14 @@
 'use client '
-import { readAllNote } from "../action"
-import NoteCard from "./NoteCard"
-import SimpleButton from "./SimpleButton";
+import NoteCard from "@/src/app/notes/_components/NoteCard"
+import SimpleButton from "@/src/components/ui/SimpleButton";
 import { useState, useEffect } from "react";
-import {deleteNote} from "../action"
+import {deleteNote} from "@/src/app/action"
 import { BookOpen } from "lucide-react";
 
 import styles from "./AllNote.module.css"
 
 
-export default  function AllNote({onEdit}){
+export default  function AllNote({onEdit, openForm}){
 
 
       async function deleteCard(idCarte){
@@ -30,10 +29,19 @@ export default  function AllNote({onEdit}){
      const [notesList, setNotesList] = useState([]);
      useEffect(()=>{
        async function loadNotes(){
-            const result = await readAllNote();
-            setSize(result.tailleNotesList);
-            setNotesList(result.data || []);  
-            setLoading(false);     
+            try{
+               const res = await fetch('/api/notes');
+               if(!res.ok) throw new Error('Erreur API: ' + res.status);
+               const result = await res.json();
+               setSize(result.size ?? result.tailleNotesList ?? 0);
+               setNotesList(result.data || []);
+            }catch(error){
+               console.error('Erreur lecture des notes:', error);
+               setSize(0);
+               setNotesList([]);
+            }finally{
+               setLoading(false);
+            }
         }
       
         loadNotes();
@@ -49,7 +57,7 @@ export default  function AllNote({onEdit}){
                         <BookOpen size ={60}  color="#C86646"/>
                         <h1>Commencez par écrire votre premiere entrée </h1>
                     </div>
-                    <p>Votre journal est vide </p> <SimpleButton  text={"Commencer"} />
+                    <p>Votre journal est vide </p> <SimpleButton  text={"Commencer"} onCliqueDessus={openForm}/>
                 </div> 
         }else{
         content = <div className="container-notes">

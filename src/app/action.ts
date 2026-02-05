@@ -1,5 +1,5 @@
 'use server'
-import {db} from "@/lib/firebase"
+import {db} from "@/src/lib/firebase"
 import{doc, collection , addDoc, getDoc, getDocs, deleteDoc, updateDoc} from "firebase/firestore"
 export async function createNote( formData:{date:string, contenu:string}) {
     const date = String(formData.date);

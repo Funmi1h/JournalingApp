@@ -1,9 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client"
-import SimpleButton from "./components/SimpleButton"
-import AddNoteForm from "./components/AddNoteForm"
+import SimpleButton from "@/src/components/ui/SimpleButton"
+import AddNoteForm from "@/src/app/notes/_components/AddNoteForm"
 import { BookOpen } from "lucide-react"
-import AllNotes from "./components/AllNotes"
+import AllNotes from "@/src/app/notes/_components/AllNotes"
 import { useState } from "react"
 export default function Page() {
   const [isFormOpen, setIsForm] = useState(false);
@@ -36,7 +35,7 @@ export default function Page() {
       <SimpleButton text = {"+  Nouvelle entrée"} onCliqueDessus={openForm} />
 
     </div>
-    <AllNotes onEdit = {openEditForm}/>
+    <AllNotes onEdit = {openEditForm} openForm={openForm}/>
   </>
   }
   return formulaire;

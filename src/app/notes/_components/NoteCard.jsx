@@ -1,6 +1,6 @@
 import styles from "./NoteCard.module.css"
 import { Pencil, Trash2 } from "lucide-react"
-import {deleteNote, updateNote} from "../action"
+import {deleteNote, updateNote} from "../../action"
 
 export default function NoteCard({id, date, text, onModify, onDelete} ){
 

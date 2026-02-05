@@ -1,59 +1,9 @@
 "use client"
-import ButtonForm from './ButtonForm'
+import ButtonForm from '@/src/components/ui/ButtonForm'
 import styles from "./AddNoteForm.module.css"
-import { createNote, updateNote } from '../action';
+import { createNote, updateNote } from "@/src/app/action";
 import { useState } from 'react';
-import {db} from "@/lib/firebase";
-function getDate(){
-    const now = new Date();
-    const year = now.getFullYear();
-    const moisChiffre = now.getMonth();
-    let mois = " ";
-    const jourChiffre = now.getDate();
-    switch(moisChiffre){
-        case 0:
-            mois = "Janvier";
-            break
-        case 1:
-            mois = "Février";
-            break
 
-        case 3:
-            mois = "Avril";
-            break
-        case 4:
-            mois = "Mai";
-            break
-        case 5:
-            mois = "Juin";
-            break
-        case 6:
-            mois = "Juillet";
-            break
-        case 7:
-            mois = "Aout";
-            break
-        case 8:
-            mois = "Septembre";
-            break
-        case 9:
-            mois = "Octobre";
-            break
-        case 10:
-            mois = "Novembre";
-            break
-        case 11:
-            mois = "Decembre";
-            break
-        case 2:
-            mois = "Mars";
-            break
-        default:
-            mois = " "  ;
-            break
-
-    }
-}
 
 
 export default function AddNoteForm({onClose, editingNote}){
@@ -72,7 +22,9 @@ export default function AddNoteForm({onClose, editingNote}){
         if(editingNote){
             await updateNote(editingNote.id, date, contenu);
         }else{
-            await createNote(date, contenu);
+            const formData = { date, contenu };
+            console.log('Création note — payload:', formData);
+            await createNote(formData);
         }
         setContenu("");
         setDate("");
