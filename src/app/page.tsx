@@ -6,7 +6,7 @@ import AllNotes from "@/src/app/notes/_components/AllNotes"
 import { useState } from "react"
 export default function Page() {
   const [isFormOpen, setIsForm] = useState(false);
-  const [editingNote, setEditingNote] = useState(null);
+  const [editingNote, setEditingNote] = useState<{id: string, date: string, contenu: string} | null>(null);
 
   function openEditForm(id:string, date: string, contenu:string){
     setEditingNote({id, date, contenu});
