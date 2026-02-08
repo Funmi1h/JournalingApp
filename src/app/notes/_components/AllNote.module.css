@@ -4,4 +4,13 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    padding: 2rem 1rem ;
+    min-height: 60vh;
+}
+
+@media (max-width: 480px) {
+    .container_vide {
+        padding: 1rem;
+        min-height: 50vh;
+    }
 }

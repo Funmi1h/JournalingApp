@@ -4,12 +4,17 @@ import AddNoteForm from "@/src/app/notes/_components/AddNoteForm"
 import { BookOpen } from "lucide-react"
 import AllNotes from "@/src/app/notes/_components/AllNotes"
 import { useState } from "react"
+interface Note {
+  id: string;
+  date: string;
+  contenu: string;
+}
 export default function Page() {
   const [isFormOpen, setIsForm] = useState(false);
-  const [editingNote, setEditingNote] = useState<{id: string, date: string, contenu: string} | null>(null);
-
+const [editingNote, setEditingNote] = useState<Note | null>(null);  
   function openEditForm(id:string, date: string, contenu:string){
     setEditingNote({id, date, contenu});
+    
     setIsForm(true);
   }
   

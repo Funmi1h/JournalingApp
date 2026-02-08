@@ -22,8 +22,7 @@ export default function AddNoteForm({onClose, editingNote}){
         if(editingNote){
             await updateNote(editingNote.id, date, contenu);
         }else{
-            const formData = { date, contenu };
-            console.log('Création note — payload:', formData);
+            const formData = {date, contenu}
             await createNote(formData);
         }
         setContenu("");

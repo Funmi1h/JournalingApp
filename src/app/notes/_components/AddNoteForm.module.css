@@ -3,15 +3,31 @@
     align-items: center;
     justify-content: center;
     margin:   auto;
-    position:absolute;
+    position:fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 1rem;
 }
 .form{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 95%;
     max-width: 600px;
     margin: auto;
+    padding: 2rem;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
 
+}
+@media (min-width: 769) {
+    .form{
+        width: 70%;
+    }
+    
 }
 .titre{
     font-weight: bold;

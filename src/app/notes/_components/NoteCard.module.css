@@ -1,6 +1,7 @@
 .NoteCard{
     position: relative;
-    width: 50%;
+    width: 90%;
+    max-width: 600px;
     display: flex;
     flex-direction: row;
     background-color: hsl(40 35% 98%);
@@ -9,6 +10,19 @@
     border-radius: 12px;
     margin: 1em auto;
     box-shadow: 0 4px 20px -4px hsl(25 20% 25% / 0.08);
+}
+
+@media (min-width: 769px) {
+    .NoteCard {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .NoteCard {
+        padding: 1.5em;
+        width: 95%;
+    }
 }
 
 .NoteCard:hover{
@@ -43,7 +57,4 @@
 .btnIconDelete:hover {
   background-color: #fee2e2;
   color: #ef4444;
-}
-.note_contenu{
-    
 }
