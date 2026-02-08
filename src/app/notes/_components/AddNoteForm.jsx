@@ -12,9 +12,7 @@ export default function AddNoteForm({onClose, editingNote}){
     const [contenu, setContenu] = useState(editingNote?.contenu || "");     
     
     async function handleSubmit(e) {
-        if(e) {
-            e.preventDefault()
-        }
+        e.preventDefault();
         if(!date || !contenu){
             alert("Veuillez remplir tous les champs!");
             return
@@ -35,7 +33,7 @@ export default function AddNoteForm({onClose, editingNote}){
     }
 
     let formulaire = <div className={styles.AddNoteForm}>
-            <form action="" className= {styles.form}>
+            <form onSubmit={handleSubmit} className= {styles.form}>
                 <h1 className= {styles.titre}>Nouvelle entrée</h1>
                 <div className={styles.inputGroup}>
                     <label htmlFor="date" >Date</label>
